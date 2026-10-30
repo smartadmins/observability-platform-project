@@ -1,0 +1,18 @@
+replicaCount: 2
+image:
+  repository: YOUR_DOCKERHUB_USER/observability-backend
+  tag: latest
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 8000
+env:
+  databaseUrl: "sqlite:////tmp/platform.db"
+  redisUrl: "redis://redis:6379/0"
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
